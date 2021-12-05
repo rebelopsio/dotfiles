@@ -1,0 +1,5 @@
+[user]
+	name = Stephen
+	email = steve@rebelops.io
+[init]
+	defaultBranch = main

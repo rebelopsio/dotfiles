@@ -1,0 +1,5 @@
+Host ubuntu-0
+    HostName ubuntu-linux 
+    User rebeladmin
+    Port 22
+    IdentityFile ~/.ssh/id_rsa
