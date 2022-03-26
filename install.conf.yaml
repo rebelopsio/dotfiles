@@ -10,3 +10,10 @@
     ~/.zshrc: zshrc
 
 
+- clean: ['~']
+
+- link:
+    ~/.bashrc: bashrc
+    ~/.vimrc: vimrc
+
+

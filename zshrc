@@ -142,10 +142,35 @@ complete -C '/usr/local/bin/aws_completer' aws
 
 #[[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
 [[ -r "$(brew --prefix)/etc/profile.d/bash_completion.sh" ]] && . "$(brew --prefix)/etc/profile.d/bash_completion.sh"
+alias kc=kubectl
+export GPG_TTY=/dev/ttys003
 
 # The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/smorgan/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/stephenmorgan/Downloads/google-cloud-sdk/path.zsh.inc'; fi
+if [ -f '/Users/smorgan/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/smorgan/google-cloud-sdk/path.zsh.inc'; fi
 
 # The next line enables shell command completion for gcloud.
-if [ -f '/Users/smorgan/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/smorgan/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
-alias kc=kubectl
+if [ -f '/Users/smorgan/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/smorgan/google-cloud-sdk/completion.zsh.inc'; fi
+export SOURCEP=~/source/personal
+
+
+###### FUNCTIONS ######
+# minikube start
+mks () {
+  minikube start
+}
+
+# minikube status 
+mkstat () {
+  minikube status
+}
+
+# create repo 
+crepo () {
+  if [ $2 ]; then
+    echo "Too many arguments!"
+  elif [ -z $1 ]; then 
+    echo "Please supply a repo name!"
+  else
+    mkdir $1 && cd $_ && git init
+  fi
+}
