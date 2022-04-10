@@ -9,7 +9,7 @@
         create: true
     ~/.zprofile: zprofile
     ~/.zshrc: zshrc
-    ~/.config/i3/conifg: i3/config
+    ~/.config/i3/config: i3/config
     ~/.config/i3/i3blocks.conf: i3/i3blocks.conf
     
 
