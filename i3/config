@@ -310,7 +310,8 @@ assign [class="Google-chrome"] $ws2
 assign [class="Thunar"] $ws3
 assign [class="Thunderbird"] $ws4
 assign [class="Slack"] $ws5
-assign [class="ObsidianMD"] $ws6
+assign [class="Obsidian"] $ws6
+assign [class="Code"] $ws7
 
 # automatic set focus new window if it opens on another workspace then the current:
 for_window [class=Xfce4-terminal] focus
