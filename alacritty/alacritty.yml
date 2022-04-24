@@ -1,2 +1,4 @@
+import:
+  - /home/rebelops/.config/alacritty/dracula.yml
 window:
   opacity: 0.8

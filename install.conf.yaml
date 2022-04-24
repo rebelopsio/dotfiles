@@ -13,3 +13,4 @@
     ~/.config/i3/i3blocks.conf: i3/i3blocks.conf
     ~/.config/sway/config: sway/config 
     ~/.config/alacritty/alacritty.yml: alacritty/alacritty.yml
+    ~/.config/waybar/config: waybar/config
