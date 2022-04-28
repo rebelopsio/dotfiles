@@ -3,6 +3,7 @@
 # Copy this to ~/.config/sway/config and edit it to your liking.
 #
 # Read `man 5 sway` for a complete reference.
+exec bash ~/dotfiles/scripts/monitor-config-wayland.sh
 
 ### Variables
 #
@@ -23,7 +24,7 @@ set $menu wofi --show=drun --lines=5 --prompts=""
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
+output * bg /usr/share/backgrounds/eos_wallpapers_community/Endy_conquest_1140P_16-9_centered.png fill
 #
 # Example configuration:
 #
@@ -35,7 +36,8 @@ output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
 #
 # Example configuration:
 #
-set $lock swaylock -c 550000
+set $lock swaylock --clock --indicator --screenshots --effect-scale 0.4 --effect-vignette 0.2:0.5 --effect-blur 4x2 --datestr "%a %e.%m.%Y" --timestr "%k:%M"
+
 exec swayidle -w \
          timeout 600 $lock \
 	 timeout 570 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
@@ -213,13 +215,19 @@ bar {
     # When the status_command prints a new line to stdout, swaybar updates.
     # The default just shows the current date and time.
     # status_command while date +'%Y-%m-%d %I:%M:%S %p'; do sleep 1; done
+    colors {
+      background #282A36
+      statusline #F8F8F2
+      separator  #44475A
 
-    # colors {
-        # statusline #ffffff
-        # background #323232
-        # inactive_workspace #32323200 #32323200 #5c5c5c
-    }
+      focused_workspace  #44475A #44475A #F8F8F2
+      active_workspace   #282A36 #44475A #F8F8F2
+      inactive_workspace #282A36 #282A36 #BFBFBF
+      urgent_workspace   #FF5555 #FF5555 #F8F8F2
+      binding_mode       #FF5555 #FF5555 #F8F8F2
+      }
 }
+#}
 #
 #
 # Gaps conifguration
@@ -234,7 +242,7 @@ default_border pixel 3
 #
 # Monitor and display config from xrandr
 #
-exec xrandr --output eDP1 --primary --mode 1920x1080 --pos 760x1440 --rotate normal --output DP1 --mode 3440x1440 --pos 0x0 --rotate normal --output DP2 --off --output HDMI1 --off --output HDMI2 --off --output VIRTUAL1 --off
+exec bash ~/dotfiles/scripts/monitor-config-wayland.sh
 
 
 include /etc/sway/config.d/*
