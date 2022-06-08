@@ -3,3 +3,9 @@ Host ubuntu-0
     User rebeladmin
     Port 22
     IdentityFile ~/.ssh/id_rsa
+
+Host personal.github.com
+	HostName github.com
+	# User rebelopsio
+	User git
+	IdentityFile ~/.ssh/rebelopsio-gh
