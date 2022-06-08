@@ -124,6 +124,7 @@ alias awsdev="export AWS_PROFILE=machinify-dev"
 alias awsprod="export AWS_PROFILE=machinify"
 alias awsacg="export AWS_PROFILE=persona-terraform-acg"
 alias pycharm="/Applications/PyCharm.app/Contents/MacOS/pycharm"
+alias awsp="source _awsp"
 export PATH=/Users/stephenmorgan/Library/Frameworks/Python.framework/Versions/3.8/bin:$PATH
 export PATH=/usr/local/bin:$PATH
 export PATH=/Users/smorgan/Library/Python/3.8/bin:$PATH
@@ -134,6 +135,7 @@ export PATH=/Users/smorgan/go/bin:$PATH
 export PATH=/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH
 export GOPATH=/Users/smorgan/source/personal/go
 export PATH=$(go env GOPATH)/bin:$PATH
+export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 eval "$(pyenv init -)"
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 complete -C '/usr/local/bin/aws_completer' aws
