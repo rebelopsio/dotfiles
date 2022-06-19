@@ -3,14 +3,13 @@ Host ubuntu-0
     User rebeladmin
     Port 22
     IdentityFile ~/.ssh/id_rsa
-<<<<<<< Updated upstream
 
 Host personal.github.com
 	HostName github.com
 	# User rebelopsio
 	User git
 	IdentityFile ~/.ssh/rebelopsio-gh
-=======
+
 Host default
   HostName 10.211.55.14
   User vagrant
@@ -22,4 +21,4 @@ Host default
   IdentitiesOnly yes
   LogLevel FATAL
 
->>>>>>> Stashed changes
+
