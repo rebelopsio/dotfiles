@@ -1,3 +1,5 @@
+ZSH_TMUX_AUTOSTART="true"
+ZSH_TMUX_CONFIG="/Users/$(whoami)/.tmux/.tmux.conf"
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -77,12 +79,13 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(zsh-autosuggestions zsh-syntax-highlighting vim-interaction ansible aws dotenv helm sudo vscode virtualenv git docker docker-compose brew kubectl npm pip pyenv python terraform vagrant)
+plugins=(emacs tmux zsh-autosuggestions zsh-syntax-highlighting vim-interaction ansible aws dotenv helm sudo vscode virtualenv git docker docker-compose brew kubectl npm pip pyenv python terraform vagrant)
 
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
+#ZSH_TMUX_UNICODE="true"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
@@ -119,7 +122,7 @@ autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /usr/local/bin/terraform terraform
 
 alias cls="clear"
-alias sf="cd /Users/smorgan/source"
+alias sf="cd /Users/${USER}/source"
 alias awsdev="export AWS_PROFILE=machinify-dev"
 alias awsprod="export AWS_PROFILE=machinify"
 alias awsacg="export AWS_PROFILE=persona-terraform-acg"
@@ -127,13 +130,15 @@ alias pycharm="/Applications/PyCharm.app/Contents/MacOS/pycharm"
 alias awsp="source _awsp"
 export PATH=/Users/stephenmorgan/Library/Frameworks/Python.framework/Versions/3.8/bin:$PATH
 export PATH=/usr/local/bin:$PATH
-export PATH=/Users/smorgan/Library/Python/3.8/bin:$PATH
+export PATH=/Users/${USER}/Library/Python/3.8/bin:$PATH
 export GUILE_LOAD_PATH="/usr/local/share/guile/site/3.0"
 export GUILE_LOAD_COMPILED_PATH="/usr/local/lib/guile/3.0/site-ccache"
 export GUILE_SYSTEM_EXTENSIONS_PATH="/usr/local/lib/guile/3.0/extensions"
-export PATH=/Users/smorgan/go/bin:$PATH
+export PATH=/Users/${USER}/go/bin:$PATH
 export PATH=/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH
-export GOPATH=/Users/smorgan/source/personal/go
+export GOPATH=/Users/${USER}/source/personal/go
+export GOROOT=$(go env GOROOT)
+export GOBIN="$GOROOT/bin"
 export PATH=$(go env GOPATH)/bin:$PATH
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 eval "$(pyenv init -)"
@@ -148,10 +153,10 @@ alias kc=kubectl
 export GPG_TTY=/dev/ttys003
 
 # The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/smorgan/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/smorgan/google-cloud-sdk/path.zsh.inc'; fi
+if [ -f '/Users/${USER}/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/smorgan/google-cloud-sdk/path.zsh.inc'; fi
 
 # The next line enables shell command completion for gcloud.
-if [ -f '/Users/smorgan/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/smorgan/google-cloud-sdk/completion.zsh.inc'; fi
+if [ -f '/Users/${USER}/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/smorgan/google-cloud-sdk/completion.zsh.inc'; fi
 export SOURCEP=~/source/personal
 
 
@@ -176,3 +181,5 @@ crepo () {
     mkdir $1 && cd $_ && git init
   fi
 }
+
+export EDITOR=nvim

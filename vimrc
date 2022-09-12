@@ -16,4 +16,4 @@ set incsearch
 set hlsearch
 
 syntax on
-
+autocmd BufWritePre *.go :silent! lua require('go.format').gofmt()

@@ -9,20 +9,11 @@
         create: true
     ~/.zprofile: zprofile
     ~/.zshrc: zshrc
-<<<<<<< HEAD
-
-
-- clean: ['~']
-
-- link:
-    ~/.bashrc: bashrc
-    ~/.vimrc: vimrc
-
-
-=======
     ~/.config/i3/config: i3/config
     ~/.config/i3/i3blocks.conf: i3/i3blocks.conf
     ~/.config/sway/config: sway/config 
     ~/.config/alacritty/alacritty.yml: alacritty/alacritty.yml
     ~/.config/waybar/config: waybar/config
->>>>>>> 2c1c2d751fc150ff448a94466f47ce6d8d4b22a7
+    ~/.emacs.d/init.el: 
+        path: emacs.d/init.el
+        create: true
