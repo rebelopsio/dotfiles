@@ -1,16 +1,4 @@
-# This is Git's per-user configuration file.
 #[user]
-# Please adapt and uncomment the following lines:
-#	name = Stephen Morgan
-#	email = stephen.morgan@machinify.com
-[includeIf "gitdir:~/source/personal/"]
-  path = ~/.gitconfig-personal
-[includeIf "gitdir:~/source/work/"]
-  path = ~/.gitconfig-work
-
-#[user]
-#	name = Stephen Morgan
-#	email = stephen.morgan@machinify.com
 [user]
 	name = Stephen Morgan
 	email = steve@rebelops.io
@@ -21,5 +9,14 @@
 	defaultBranch = main
 [commit]
 	gpgsign = true
+[filter "lfs"]
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+[safe]
+  directory = /Users/stephenmorgan/source/work/change-management-operator
+[commit]
+  gpgsign = true
 [gpg]
 	program = /usr/local/bin/gpg
