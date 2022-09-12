@@ -1,7 +1,3 @@
-# Fig pre block. Keep at the top of this file.
-export PATH="${PATH}:${HOME}/.local/bin"
-eval "$(fig init zsh pre)"
-
 ZSH_TMUX_AUTOSTART=true
 ZSH_TMUX_CONFIG="/Users/$(whoami)/.tmux/.tmux.conf"
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
@@ -174,9 +170,6 @@ export kc=kubectl
 alias kc=kubectl
 [[ /usr/local/bin/kubectl ]] && source <(kubectl completion zsh)
 XDG_CONFIG_HOME=/Users/stephenmorgan
-
-# Fig post block. Keep at the bottom of this file.
-eval "$(fig init zsh post)"
 
 export GPG_TTY=/dev/ttys003
 
