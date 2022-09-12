@@ -2,6 +2,8 @@
 export PATH="${PATH}:${HOME}/.local/bin"
 eval "$(fig init zsh pre)"
 
+ZSH_TMUX_AUTOSTART="true"
+ZSH_TMUX_CONFIG="/Users/$(whoami)/.tmux/.tmux.conf"
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -13,7 +15,7 @@ fi
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/Users/stephenmorgan/.oh-my-zsh"
+export ZSH="/Users/${USER}/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -42,6 +44,13 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 
 # Uncomment the following line to change how often to auto-update (in days).
 # export UPDATE_ZSH_DAYS=13
+# Uncomment one of the following lines to change the auto-update behavior
+# zstyle ':omz:update' mode disabled  # disable automatic updates
+# zstyle ':omz:update' mode auto      # update automatically without asking
+# zstyle ':omz:update' mode reminder  # just remind me to update when it's time
+
+# Uncomment the following line to change how often to auto-update (in days).
+# zstyle ':omz:update' frequency 13
 
 # Uncomment the following line if pasting URLs and other text is messed up.
 # DISABLE_MAGIC_FUNCTIONS="true"
@@ -58,6 +67,9 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Uncomment the following line to display red dots whilst waiting for completion.
 # Caution: this setting can cause issues with multiline prompts (zsh 5.7.1 and newer seem to work)
 # See https://github.com/ohmyzsh/ohmyzsh/issues/5765
+# You can also set it to another string to have that shown instead of the default red dots.
+# e.g. COMPLETION_WAITING_DOTS="%F{yellow}waiting...%f"
+# Caution: this setting can cause issues with multiline prompts in zsh < 5.7.1 (see #5765)
 # COMPLETION_WAITING_DOTS="true"
 
 # Uncomment the following line if you want to disable marking untracked files
@@ -81,8 +93,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(zsh-autosuggestions vim-interaction ansible aws dotenv helm sudo vscode virtualenv git docker docker-compose brew kubectl npm pip pyenv python terraform vagrant helm)
-
+plugins=(emacs tmux zsh-autosuggestions zsh-syntax-highlighting vim-interaction ansible aws dotenv helm sudo vscode virtualenv git docker docker-compose brew kubectl npm pip pyenv python terraform vagrant)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -124,18 +135,25 @@ autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /usr/local/bin/terraform terraform
 
 alias cls="clear"
-alias sf="cd /Users/stephenmorgan/source"
+alias sf="cd /Users/${USER}/source"
 alias awsdev="export AWS_PROFILE=machinify-dev"
 alias awsprod="export AWS_PROFILE=machinify"
 alias awsacg="export AWS_PROFILE=persona-terraform-acg"
 alias pycharm="/Applications/PyCharm.app/Contents/MacOS/pycharm"
-export PATH=/Users/stephenmorgan/Library/Frameworks/Python.framework/Versions/3.8/bin:$PATH
+alias awsp="source _awsp"
+export PATH=/Users/${USER}/Library/Frameworks/Python.framework/Versions/3.8/bin:$PATH
 export PATH=/usr/local/bin:$PATH
-export PATH=/Users/stephenmorgan/Library/Python/3.8/bin:$PATH
+export PATH=/Users/${USER}/Library/Python/3.8/bin:$PATH
 export GUILE_LOAD_PATH="/usr/local/share/guile/site/3.0"
 export GUILE_LOAD_COMPILED_PATH="/usr/local/lib/guile/3.0/site-ccache"
 export GUILE_SYSTEM_EXTENSIONS_PATH="/usr/local/lib/guile/3.0/extensions"
-export PATH=/Users/smorgan/go/bin:$PATH
+export PATH=/Users/${USER}/go/bin:$PATH
+export PATH=/Applications/Postgres.app/Contents/Versions/latest/bin:$PATH
+export GOPATH=/Users/${USER}/source/personal/go
+export GOROOT=$(go env GOROOT)
+export GOBIN="$GOROOT/bin"
+export PATH=$(go env GOPATH)/bin:$PATH
+export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 eval "$(pyenv init -)"
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 complete -C '/usr/local/bin/aws_completer' aws
@@ -160,3 +178,36 @@ XDG_CONFIG_HOME=/Users/stephenmorgan
 # Fig post block. Keep at the bottom of this file.
 eval "$(fig init zsh post)"
 
+export GPG_TTY=/dev/ttys003
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/${USER}/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/smorgan/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/${USER}/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/smorgan/google-cloud-sdk/completion.zsh.inc'; fi
+export SOURCEP=~/source/personal
+
+
+###### FUNCTIONS ######
+# minikube start
+mks () {
+  minikube start
+}
+
+# minikube status 
+mkstat () {
+  minikube status
+}
+
+# create repo 
+crepo () {
+  if [ $2 ]; then
+    echo "Too many arguments!"
+  elif [ -z $1 ]; then 
+    echo "Please supply a repo name!"
+  else
+    mkdir $1 && cd $_ && git init
+  fi
+}
+
+export EDITOR=nvim

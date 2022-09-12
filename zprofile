@@ -6,6 +6,8 @@ eval "$(fig init zsh pre)"
 export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
 
 # Add this to fix pyenv
+eval "$(/opt/homebrew/bin/brew shellenv)"
+
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init --path)"
@@ -22,3 +24,7 @@ fi
 # Fig post block. Keep at the bottom of this file.
 eval "$(fig init zsh post)"
 
+# Setting PATH for Python 3.10
+# The original version is saved in .zprofile.pysave
+PATH="/Library/Frameworks/Python.framework/Versions/3.10/bin:${PATH}"
+export PATH

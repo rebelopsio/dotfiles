@@ -2,12 +2,21 @@
 
 - link:
     ~/.profile: profile
-    ~/.bashrc: bashrc
-    ~/.gitconfig: gitconfig
     ~/.vim/vimrc:
         path: vim/vimrc
         create: true
+    ~/.bashrc: .bashrc
+    ~/.gitconfig: gitconfig
+    ~/.ssh/config:
+        path: ssh/config
+        create: true
     ~/.zprofile: zprofile
     ~/.zshrc: zshrc
-
-
+    ~/.config/i3/config: i3/config
+    ~/.config/i3/i3blocks.conf: i3/i3blocks.conf
+    ~/.config/sway/config: sway/config 
+    ~/.config/alacritty/alacritty.yml: alacritty/alacritty.yml
+    ~/.config/waybar/config: waybar/config
+    ~/.emacs.d/init.el: 
+        path: emacs.d/init.el
+        create: true

@@ -13,9 +13,13 @@
 #	email = stephen.morgan@machinify.com
 [user]
 	name = Stephen Morgan
-	email = stephen.morgan@machinify.com
-[filter "lfs"]
-	required = true
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
+	email = steve@rebelops.io
+	signKey = DB98AD4B
+	signingKey = 920F7DB40A3BA3EF9B35485DE5E86C5D78D24259
+
+[init]
+	defaultBranch = main
+[commit]
+	gpgsign = true
+[gpg]
+	program = /usr/local/bin/gpg
