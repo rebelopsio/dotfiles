@@ -21,3 +21,5 @@
         path: emacs.d/init.el
         create: true
     ~/.emacs.d/Emacs.org: emacs.d/Emacs.org
+    ~/.config/yabai/yabairc: yabai/yabairc
+    ~/.config/skhd/skhdrc: skhd/skhdrc

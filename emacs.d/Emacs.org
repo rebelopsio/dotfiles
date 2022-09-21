@@ -82,15 +82,21 @@ This section configures basic UI settings that remove unneeded elements to make 
                   term-mode-hook
                   shell-mode-hook
                   treemacs-mode-hook
-                  eshell-mode-hook))
+                  eshell-mode-hook
+                  ansi-shell-mode-hook))
     (add-hook mode (lambda () (display-line-numbers-mode 0))))
 
   ;;(set-frame-parameter (selected-frame) 'alpha '(<active> . <inactive>))
   ;;(set-frame-parameter (selected-frame) 'alpha <both>)
   (set-frame-parameter (selected-frame) 'alpha '(80 . 50))
   (add-to-list 'default-frame-alist '(alpha . (80 . 50)))
+  (setq explicit-shell-file-name "/bin/zsh")
+
 
 #+end_src
+
+#+RESULTS:
+: /bin/zsh
 
 ** Font Configuration
 
@@ -191,8 +197,8 @@ This configuration uses [[https://evil.readthedocs.io/en/latest/index.html][evil
   (spaceline-spacemacs-theme)
   (spaceline-toggle-evil-state-on)
   (setq spaceline-highlight-face-func 'spaceline-highlight-face-evil-state)
-  (use-package eterm-256color)
-  (use-package xterm-color)
+  ;; (use-package eterm-256color)
+  ;; (use-package xterm-color)
   ;;(setq spaceline-highlight-face-func 'spaceline-highliggh-face-evil-state)
 
 
@@ -720,8 +726,8 @@ We also use [[https://github.com/sebastiencs/company-box][company-box]] to furth
   ;; (use-package evil-magit
   ;;   :after magit)
 
-  ;; ;; 
-  NOTE: Make sure to configure a GitHub token before using this package!
+  ;; 
+  ;; NOTE: Make sure to configure a GitHub token before using this package!
   ;; - https://magit.vc/manual/forge/Token-Creation.html#Token-Creation
   ;; - https://magit.vc/manual/ghub/Getting-Started.html#Getting-Started
   (use-package forge)
