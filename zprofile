@@ -17,9 +17,6 @@ if [ -f "${HOME}/.gpg-agent-info" ]; then
     export SSH_AUTH_SOCK
 fi
 
-# Fig post block. Keep at the bottom of this file.
-eval "$(fig init zsh post)"
-
 # Setting PATH for Python 3.10
 # The original version is saved in .zprofile.pysave
 PATH="/Library/Frameworks/Python.framework/Versions/3.10/bin:${PATH}"
