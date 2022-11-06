@@ -23,3 +23,5 @@
     ~/.emacs.d/Emacs.org: emacs.d/Emacs.org
     ~/.config/yabai/yabairc: yabai/yabairc
     ~/.config/skhd/skhdrc: skhd/skhdrc
+    ~/.config/lvim/config.lua: lvim/config.lua
+
