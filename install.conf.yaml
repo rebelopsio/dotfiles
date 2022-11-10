@@ -24,4 +24,5 @@
     ~/.config/yabai/yabairc: yabai/yabairc
     ~/.config/skhd/skhdrc: skhd/skhdrc
     ~/.config/lvim/config.lua: lvim/config.lua
+    ~/.tmux.conf.local: .tmux.conf.local
 
