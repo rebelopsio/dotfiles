@@ -2,21 +2,24 @@
 [user]
 	name = Stephen Morgan
 	email = steve@rebelops.io
-	signKey = DB98AD4B
-	signingKey = 920F7DB40A3BA3EF9B35485DE5E86C5D78D24259
+  #signKey = DB98AD4B
+  #signingKey = 920F7DB40A3BA3EF9B35485DE5E86C5D78D24259
 
 [init]
 	defaultBranch = main
-[commit]
-	gpgsign = true
 [filter "lfs"]
 	required = true
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
-[safe]
-  directory = /Users/stephenmorgan/source/work/change-management-operator
 [commit]
   gpgsign = true
 [gpg]
-	program = /usr/local/bin/gpg
+  # program = /usr/local/bin/gpg
+	format = x509
+[tag]
+	gpgsign = true
+[gpg "x509"]
+	program = gitsign
+[pull]
+	rebane = true
