@@ -1,5 +1,6 @@
+export EMACS=""
 ZSH_TMUX_AUTOSTART=true
-ZSH_TMUX_CONFIG="/Users/$(whoami)/.tmux/.tmux.conf"
+ZSH_TMUX_CONFIG="/Users/${USER}/.tmux.conf"
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -89,7 +90,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(emacs tmux zsh-autosuggestions zsh-syntax-highlighting vim-interaction ansible aws dotenv helm sudo vscode virtualenv git docker docker-compose brew kubectl npm pip pyenv python terraform vagrant)
+plugins=(tmux vim-interaction ansible aws dotenv helm sudo vscode virtualenv git docker docker-compose brew kubectl npm pip pyenv python terraform vagrant zsh-autosuggestions zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 

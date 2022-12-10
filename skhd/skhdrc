@@ -1,7 +1,7 @@
 # skhdrc - keyboard hotkeys
 
 # quick shortcuts
-cmd - return : /Applications/Kitty.app/Contents/MacOS/kitty --single-instance -d ~
+cmd - return : /Applications/Alacritty.app/Contents/MacOS/alacritty
 
 # space navigation
 cmd - 1 : yabai -m space --focus 1

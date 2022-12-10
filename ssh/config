@@ -10,6 +10,12 @@ Host personal.github.com
 	User git
 	IdentityFile ~/.ssh/rebelopsio-gh
 
+Host github.com
+	HostName github.com
+	# User rebelopsio
+	User git
+  IdentityFile ~/.ssh/rebelopsio-gh
+
 Host default
   HostName 10.211.55.14
   User vagrant
