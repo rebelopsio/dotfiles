@@ -1,6 +1,8 @@
 export EMACS=""
-ZSH_TMUX_AUTOSTART=true
-ZSH_TMUX_CONFIG="/Users/${USER}/.tmux.conf"
+
+eval "$(zellij setup --generate-auto-start zsh)"
+# ZSH_TMUX_AUTOSTART=true
+# ZSH_TMUX_CONFIG="/Users/${USER}/.tmux.conf"
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -138,6 +140,7 @@ alias awsprod="export AWS_PROFILE=machinify"
 alias awsacg="export AWS_PROFILE=persona-terraform-acg"
 alias pycharm="/Applications/PyCharm.app/Contents/MacOS/pycharm"
 alias awsp="source _awsp"
+alias vim="lvim"
 export PATH=/Users/${USER}/Library/Frameworks/Python.framework/Versions/3.8/bin:$PATH
 export PATH=/usr/local/bin:$PATH
 export PATH=/Users/${USER}/Library/Python/3.8/bin:$PATH
@@ -172,7 +175,7 @@ alias kc=kubectl
 export kc=kubectl
 alias kc=kubectl
 [[ /usr/local/bin/kubectl ]] && source <(kubectl completion zsh)
-# XDG_CONFIG_HOME=/Users/stephenmorgan
+export XDG_CONFIG_HOME=/Users/${USER}
 
 # export GPG_TTY=/dev/ttys003
 
@@ -213,8 +216,11 @@ export EDITOR=nvim
 
 
 
+#export NVM_DIR="$HOME/.nvm"
+#[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+#[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+[ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
+[ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 export GPG_TTY=$(tty)
 export PATH=~/.npm-global/bin:$PATH

@@ -2,8 +2,8 @@
 [user]
 	name = Stephen Morgan
 	email = steve@rebelops.io
-  #signKey = DB98AD4B
-  #signingKey = 920F7DB40A3BA3EF9B35485DE5E86C5D78D24259
+  signKey = DB98AD4B
+  signingKey = 920F7DB40A3BA3EF9B35485DE5E86C5D78D24259
 
 [init]
 	defaultBranch = main
@@ -15,11 +15,11 @@
 [commit]
   gpgsign = true
 [gpg]
-  # program = /usr/local/bin/gpg
-	format = x509
+  program = /opt/homebrew/bin/gpg
+  #format = x509
 [tag]
 	gpgsign = true
 [gpg "x509"]
-	program = gitsign
+  program = gitsign
 [pull]
-	rebane = true
+	rebase = true

@@ -7,20 +7,23 @@ a global executable or a path to
 an executable
 ]]
 -- THESE ARE EXAMPLE CONFIGS FEEL FREE TO CHANGE TO WHATEVER YOU WANT
-
 -- general
 lvim.log.level = "warn"
-lvim.format_on_save = {
-  pattern = {
-    "*.go",
-    "*.py",
-    "*.sh",
-    "*.lua",
-    "*.yml",
-    "*.yaml",
-  },
-}
-lvim.colorscheme = "dracula"
+lvim.format_on_save = "all" 
+-- {
+--   pattern = {
+--     "*.go",
+--     "*.py",
+--     "*.sh",
+--     "*.lua",
+--     "*.yml",
+--     "*.yaml",
+--     "*.php",
+--     "*.tf",
+--     "*.ts",
+--   },
+-- }
+lvim.colorscheme = "catppuccin-mocha"
 lvim.transparent_window = true
 
 -- keymappings [view all the defaults by pressing <leader>Lk]
@@ -62,6 +65,7 @@ lvim.builtin.which_key.mappings["t"] = {
   w = { "<cmd>Trouble lsp_workspace_diagnostics<cr>", "Diagnostics" },
 }
 
+
 -- TODO: User Config for predefined plugins
 -- After changing plugin config exit and reopen LunarVim, Run :PackerInstall :PackerCompile
 lvim.builtin.alpha.active = true
@@ -76,12 +80,14 @@ lvim.builtin.treesitter.ensure_installed = {
   "bash",
   "c",
   "json",
+  "typescript",
   "lua",
   "python",
   "rust",
   "yaml",
   "go",
   "gomod",
+  "php",
 }
 
 lvim.builtin.treesitter.ignore_install = { "haskell" }
@@ -116,34 +122,46 @@ formatters.setup {
   { command = "black", filetypes = { "python" } },
   { command = "goimports", filetypes = { "go" } },
   { command = "gofmt", filetypes = { "go" } },
+  { command = "terraform_fmt", filetypes = { "terraform", "tf" } },
 }
 -- lvim.lsp.providers.yamlls.settings.yaml.schemas["helmfile"] = {
 --
 -- }
--- -- set additional linters
--- local linters = require "lvim.lsp.null-ls.linters"
--- linters.setup {
---   { command = "flake8", filetypes = { "python" } },
---   {
---     -- each linter accepts a list of options identical to https://github.com/jose-elias-alvarez/null-ls.nvim/blob/main/doc/BUILTINS.md#Configuration
---     command = "shellcheck",
---     ---@usage arguments to pass to the formatter
---     -- these cannot contain whitespaces, options such as `--line-width 80` become either `{'--line-width', '80'}` or `{'--line-width=80'}`
---     extra_args = { "--severity", "warning" },
---   },
---   {
---     command = "codespell",
---     ---@usage specify which filetypes to enable. By default a providers will attach to all the filetypes it supports.
---     filetypes = { "javascript", "python" },
---   },
--- }
+-- set additional linters
+local linters = require "lvim.lsp.null-ls.linters"
+linters.setup {
+  { command = "flake8", filetypes = { "python" } },
+  --  { command = "tflint", filetypes = { "terraform" } },
+}
 
 -- Additional Plugins
 lvim.plugins = {
   { "Mofiqul/dracula.nvim" },
+  { "catppuccin/nvim", as = "catppuccin" },
   {
     "sindrets/diffview.nvim",
     event = "BufRead",
+  },
+  {
+    "nathom/filetype.nvim",
+    config = function()
+        require("filetype").setup {
+            overrides = {
+                extensions = {
+                    tf = "terraform",
+                    tfvars = "terraform",
+                    tfstate = "json",
+                },
+            },
+        }
+    end,
+  },
+  {
+    "folke/todo-comments.nvim",
+    event = "BufRead",
+    config = function()
+      require("todo-comments").setup()
+    end,
   },
   {
     "f-person/git-blame.nvim",
@@ -178,9 +196,23 @@ lvim.plugins = {
   {
     "wakatime/vim-wakatime"
   },
+  -- {
+  --   'nvim-tree/nvim-web-devicons',
+  -- },
   {
     "folke/trouble.nvim",
     cmd = "TroubleToggle",
+    --after = {"nvim-web-devicons"},
+    config = function()
+      require("TroubleToggle").setup {
+      -- your configuration comes here
+      -- or leave it empty to use the default settings
+      -- refer to the configuration section below
+      }
+    end
+  },
+  {
+    'folke/lsp-colors.nvim',
   },
   {
     "Pocco81/auto-save.nvim",
@@ -188,10 +220,32 @@ lvim.plugins = {
       require("auto-save").setup()
     end,
   },
+  {'nvim-telescope/telescope-ui-select.nvim' },
   { "olexsmir/gopher.nvim" },
   { "leoluz/nvim-dap-go" },
+  {
+    "MunifTanjim/prettier.nvim",
+    config = function()
+      require("prettier").setup({
+        bin = 'prettier', -- or `'prettierd'` (v0.22+)
+        filetypes = {
+          "css",
+          "graphql",
+          "html",
+          "javascript",
+          "javascriptreact",
+          "json",
+          "less",
+          "markdown",
+          "scss",
+          "typescript",
+          "typescriptreact",
+          "yaml",
+        },
+      })
+    end,
+  },
 }
-
 -- Copilot config
 lvim.builtin.cmp.formatting.source_names["copilot"] = "(Copilot)"
 table.insert(lvim.builtin.cmp.sources, 1, { name = "copilot" })

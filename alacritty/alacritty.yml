@@ -1,4 +1,13 @@
 import:
-  - /home/rebelops/.config/alacritty/dracula.yml
+  #- /home/rebelops/.config/alacritty/dracula.yml
+  - /home/smorgan/.config/alacritty/catppuccin-mocha.yml
 window:
   opacity: 0.8
+  decorations: none
+  startup_mode: Maximized
+font:
+  normal:
+    family: JetBrainsMono NF
+  size: 14.0
+selection:
+  save_to_clipboard: true
