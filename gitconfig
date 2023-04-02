@@ -13,7 +13,7 @@
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 [commit]
-  gpgsign = true
+  gpgsign = false
 [gpg]
   program = /opt/homebrew/bin/gpg
   #format = x509

@@ -131,3 +131,5 @@ alias pip=pip3
 
 ###### EXPORT ######
 export PATH="/home/rebelops/.local/bin:$PATH"
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash

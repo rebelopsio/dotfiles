@@ -6,8 +6,7 @@ export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init --path)"
 
 eval $(gpg-agent --daemon)
-GPG_TTY=$(tty)
-export GPG_TTY
+export GPG_TTY=$(tty)
 if [ -f "${HOME}/.gpg-agent-info" ]; then
     . "${HOME}/.gpg-agent-info"
     export GPG_AGENT_INFO

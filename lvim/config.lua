@@ -9,7 +9,7 @@ an executable
 -- THESE ARE EXAMPLE CONFIGS FEEL FREE TO CHANGE TO WHATEVER YOU WANT
 -- general
 lvim.log.level = "warn"
-lvim.format_on_save = "all" 
+lvim.format_on_save = "all"
 -- {
 --   pattern = {
 --     "*.go",
@@ -25,7 +25,7 @@ lvim.format_on_save = "all"
 -- }
 lvim.colorscheme = "catppuccin-mocha"
 lvim.transparent_window = true
-
+lvim.builtin.terminal.direction = "float"
 -- keymappings [view all the defaults by pressing <leader>Lk]
 lvim.leader = "space"
 -- add your own keymapping
@@ -65,7 +65,6 @@ lvim.builtin.which_key.mappings["t"] = {
   w = { "<cmd>Trouble lsp_workspace_diagnostics<cr>", "Diagnostics" },
 }
 
-
 -- TODO: User Config for predefined plugins
 -- After changing plugin config exit and reopen LunarVim, Run :PackerInstall :PackerCompile
 lvim.builtin.alpha.active = true
@@ -92,6 +91,8 @@ lvim.builtin.treesitter.ensure_installed = {
 
 lvim.builtin.treesitter.ignore_install = { "haskell" }
 lvim.builtin.treesitter.highlight.enabled = true
+
+
 
 -- generic LSP settings
 
@@ -123,6 +124,8 @@ formatters.setup {
   { command = "goimports", filetypes = { "go" } },
   { command = "gofmt", filetypes = { "go" } },
   { command = "terraform_fmt", filetypes = { "terraform", "tf" } },
+  { command = "prettierd", filetypes = { "javascript", "typescript", "vue", "json", "jsonc", "yaml", "markdown", "markdown.mdx", "graphql" } },
+  { command = "lua-format", filetypes = { "lua" } },
 }
 -- lvim.lsp.providers.yamlls.settings.yaml.schemas["helmfile"] = {
 --
@@ -176,6 +179,9 @@ lvim.plugins = {
     ft = { "markdown" }
   },
   {
+    'JellyApple102/easyread.nvim'
+  },
+  {
     "zbirenbaum/copilot.lua",
     event = { "VimEnter" },
     config = function()
@@ -224,6 +230,14 @@ lvim.plugins = {
   { "olexsmir/gopher.nvim" },
   { "leoluz/nvim-dap-go" },
   {
+    -- sudo ln -s /opt/homebrew/bin/python3 /usr/local/bin/python
+    'jakewvincent/mkdnflow.nvim',
+    rocks = 'luautf8', -- Ensures optional luautf8 dependency is installed
+    config = function()
+        require('mkdnflow').setup()
+    end
+  },
+  {
     "MunifTanjim/prettier.nvim",
     config = function()
       require("prettier").setup({
@@ -241,6 +255,7 @@ lvim.plugins = {
           "typescript",
           "typescriptreact",
           "yaml",
+          "lua",
         },
       })
     end,

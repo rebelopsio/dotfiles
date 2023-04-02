@@ -135,12 +135,8 @@ complete -o nospace -C /usr/local/bin/terraform terraform
 
 alias cls="clear"
 alias sf="cd /Users/${USER}/source"
-alias awsdev="export AWS_PROFILE=machinify-dev"
-alias awsprod="export AWS_PROFILE=machinify"
-alias awsacg="export AWS_PROFILE=persona-terraform-acg"
-alias pycharm="/Applications/PyCharm.app/Contents/MacOS/pycharm"
 alias awsp="source _awsp"
-alias vim="lvim"
+alias vim="nvim"
 export PATH=/Users/${USER}/Library/Frameworks/Python.framework/Versions/3.8/bin:$PATH
 export PATH=/usr/local/bin:$PATH
 export PATH=/Users/${USER}/Library/Python/3.8/bin:$PATH
@@ -157,7 +153,6 @@ export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 export PATH="/Users/${USER}/.cargo/bin:$PATH"
 export PATH="/Users/${USER}/.local/bin:$PATH"
 eval "$(pyenv init -)"
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 complete -C '/usr/local/bin/aws_completer' aws
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
@@ -172,12 +167,9 @@ if [ -f '/Users/stephenmorgan/Downloads/google-cloud-sdk/path.zsh.inc' ]; then .
 if [ -f '/Users/stephenmorgan/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/stephenmorgan/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
 
 alias kc=kubectl
-export kc=kubectl
-alias kc=kubectl
 [[ /usr/local/bin/kubectl ]] && source <(kubectl completion zsh)
-export XDG_CONFIG_HOME=/Users/${USER}
+export XDG_CONFIG_HOME=/Users/${USER}/.config
 
-# export GPG_TTY=/dev/ttys003
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/Users/${USER}/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/smorgan/google-cloud-sdk/path.zsh.inc'; fi
@@ -222,5 +214,5 @@ export EDITOR=nvim
 export NVM_DIR="$HOME/.nvm"
 [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && \. "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
 [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
-export GPG_TTY=$(tty)
 export PATH=~/.npm-global/bin:$PATH
+
