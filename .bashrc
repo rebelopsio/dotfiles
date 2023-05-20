@@ -133,3 +133,4 @@ alias pip=pip3
 export PATH="/home/rebelops/.local/bin:$PATH"
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+. "$HOME/.cargo/env"
